@@ -7,7 +7,6 @@ var routes = require('./routes/');
 var app = express(); // creates an instance of an express application
 var port = 3000;
 
-// app.use(express.static('public'));
 
 app.use('/', routes);
 
