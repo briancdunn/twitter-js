@@ -50,7 +50,7 @@ module.exports = function(io) {
 	router.post('/submit', urlencodedParser, function (req, res) {
 		console.log(req.body);
 		tweetBank.add(req.body.name, req.body.text);
-		io.sockets.emit('new_tweet', { nam: req.body.name, text: req.body.text });
+		io.sockets.emit('new_tweet', { name: req.body.name, text: req.body.text });
 		//route to new user
 		res.redirect('/');
 	});

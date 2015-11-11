@@ -89,7 +89,11 @@
       socket.on('new_tweet', function (tweet) { 
         console.log(tweet);
         alert('Refreshing... check the console...');
-        var p = "<dt><div class = 'by'><a href = '/users/"+tweet.name+">"+tweet.name+"</a></div></dt><dd>"+tweet.text+"</dd>";
+
+        // <dt><div class = "by"><a href = "/users/{{tweet.name}}">{{tweet.name}}</a></div></dt>
+        // <dd>{{tweet.text}}</dd>
+        var p = "<dt><div class = 'by'><a href = '/users/"+tweet.name+"''>"+tweet.name+"</a></div></dt><dd>"+tweet.text+"</dd>";
+        //var p = "<div>new Item "+tweet.name+"</div>";
         console.log(p);
         $(document.getElementById('tweetList')).append(p);
       }); 
