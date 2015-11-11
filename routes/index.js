@@ -41,8 +41,28 @@ module.exports = function(io) {
 		//create tweets array
 		console.log("userName: "+ req.params.userName);
 		var userTweets = tweetBank.find({name: req.params.userName});
+
+		var tweetIds = [];
+		for(var i = 0; i < userTweets.length; i++) tweetIds.push(i);
 		console.log(userTweets);
-		res.render('index', { showForm: true, name:req.params.userName, title: 'tweets by ' + req.params.userName, tweets: userTweets });
+		res.render('index', { showForm: true, showId: true, name:req.params.userName, title: 'tweets by ' + req.params.userName, tweets: userTweets });
+	});
+
+
+	//route to get tweets by users/username/tweets/ID
+	router.get('/users/:userName/tweets/:id', function(req, res){
+		//create tweets array
+		var userTweets = tweetBank.find({name: req.params.userName});
+		var tweetId = Number.parseInt(req.params.id);
+
+		console.log("userName: "+ req.params.userName + "id: " + tweetId);
+		console.log(userTweets[tweetId]);
+
+		if(userTweets.length >= tweetId)
+		{
+			//pass single tweet into an array, so that index.html can still process it:
+			res.render('index', { showForm: true, name:req.params.userName, title: 'tweets by ' + req.params.userName, tweets: [userTweets[tweetId]] });
+		}
 	});
 
 
