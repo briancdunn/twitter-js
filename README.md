@@ -1,7 +1,7 @@
 # twitter-js
 
 to install dependencies:
-'''npm install'''
+```npm install```
 
 to run this app:
-'''npm start'''
+```npm start```
